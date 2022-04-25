@@ -141,3 +141,5 @@ Another issue is that because of a lot of missing data I could not use the full 
 4. Exploring alternatives to K-means in order to deal with unusual cluster shapee (Possibly [DBSCAN](https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html) which is based on similarity related to the density of data points.
 
 5. More attention to _prospect_keywords_. Possibly comparing them with results from the clustering.
+
+6. Applying word stemming or lemmatization before vectorizing data. 
