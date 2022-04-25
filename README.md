@@ -9,6 +9,7 @@ I will start with pre-processing of the data. This includes data exploration and
 ## Methodology
 ### Data exploration
 Below is a snapshot of the content (columns) of the dataset:
+
 ![image](https://user-images.githubusercontent.com/43813983/165172795-5ef0439e-3db8-442a-a7ec-29bee088ac74.png)
 
 Before proceeding with anything else I need to edit the columns in order to navigate easily through data. Several columns will be removed too since they are of no use to the task (having too many null values, date columns, or columns containing only one value:
@@ -38,6 +39,7 @@ _media_type_, _program_name_, _article_type_, and _source_system_ columns were s
 ![image](https://user-images.githubusercontent.com/43813983/165175461-50323d9a-3937-42c0-8455-ac2e71237c13.png)
 
 This is the final result of the pre-processing described above (since I am not editing the column content, this stage is added to exploration and not to cleaning):
+
 ![image](https://user-images.githubusercontent.com/43813983/165175982-4ddee575-ccc3-4136-a0c8-8d916fec7a59.png)
 
 For the current version of the task I will not need all columns that were left after the first stage of pre-processing.
@@ -45,12 +47,14 @@ For the current version of the task I will not need all columns that were left a
 ### Data cleaning
 In this stage I am going to prepare the _abstract_ column content for vectorization and clustering.
 A function **clean_text** is added to pre-process text, generate tokens and return cleaned text. Several python libraries are used here:
+
 ```
 import re
 import string
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 ```
+
 The process of cleaning contains the following steps:
 1. Transform the input into a string and lowercase it
 2. Remove links from text
@@ -70,6 +74,7 @@ The process of cleaning contains the following steps:
 During this process I have noticed there are duplicate abstracts in the data and proceeded with droping them. As a result I was left with a dataframe with shape (275,20).
 
 ### Tf-Idf Vectorization
+
 TF-IDF (term frequency-inverse document frequency) is a statistical measure that evaluates how relevant a word is to a document in a collection  or corpus. The tf-idf value increases proportionally to the number of times a word appears in the document and is offset by the number of documents in the corpus that contain the word, which helps to adjust for the fact that some words appear more frequently in general (https://en.wikipedia.org/wiki/Tf%E2%80%93idf)
 
 In this project sklearn [TfidfVectorizer](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) is use where the following parameters are edited:
